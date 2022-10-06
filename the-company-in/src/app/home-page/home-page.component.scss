@@ -1,0 +1,18 @@
+main {
+  padding: 15px;
+  height: calc(100vh - 61px);
+}
+input {
+  width: 50%;
+  margin: 0 auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  gap: 20px;
+}

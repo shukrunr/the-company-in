@@ -1,0 +1,15 @@
+<main>
+  <section>
+    <input type="text" [(ngModel)]="searchValue" (keydown.enter)="search()" />
+  </section>
+
+  <br />
+
+  <section>
+    <app-company-card
+      *ngFor="let company of companies"
+      [company]="company"
+      [routerLink]="['/company/', company.id]"
+    ></app-company-card>
+  </section>
+</main>

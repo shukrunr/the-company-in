@@ -1,0 +1,43 @@
+<main *ngIf="company">
+  <header>
+    <img height="30" src="{{ company.logo }}" alt="logo" />
+    <h2>{{ company.name }}</h2>
+  </header>
+  <section>
+    <ul>
+      <li>
+        <p><b>Domain:</b> &nbsp; {{ company.domain }}</p>
+      </li>
+      <li>
+        <p><b>Description:</b> &nbsp; {{ company.description }}</p>
+      </li>
+      <li>
+        <p><b>Industry:</b> &nbsp; {{ company.category.industry }}</p>
+      </li>
+      <li>
+        <p><b>Money Raised:</b> &nbsp; {{ company.metrics.raised || "N/A" }}</p>
+      </li>
+      <li>
+        <p>
+          <b>Market Cap:</b> &nbsp; {{ company.metrics.marketCap || "N/A" }}
+        </p>
+      </li>
+      <li>
+        <p>
+          <b>Annual Revenue:</b> &nbsp;
+          {{ company.metrics.annualRevenue || "N/A" }}
+        </p>
+      </li>
+      <li>
+        <p><b>Location:</b> &nbsp; {{ company.location || "N/A" }}</p>
+      </li>
+      <li>
+        <p>
+          <b>No. Employees:</b> &nbsp; {{ company.metrics.employees || "N/A" }}
+        </p>
+      </li>
+    </ul>
+
+    <button (click)="likeCompany()">Like</button>
+  </section>
+</main>
