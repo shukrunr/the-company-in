@@ -26,7 +26,7 @@ namespace TheCompanyIn.Controllers
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 var company = await httpResponseMessage.Content.ReadFromJsonAsync<Company?>();
-                Companies.Add(company.Id, company);
+                Companies.Add(company?.Id, company);
                 return Ok(company);
             }
 
@@ -38,7 +38,18 @@ namespace TheCompanyIn.Controllers
             => Companies.TryGetValue(id, out Company? comp) ? Ok(comp) : NotFound();
 
         [HttpGet("list")]
-        public ActionResult<Company> GetCompanies() => Ok(Companies.Values);
+        public ActionResult<Company> GetCompanies() => Ok(Companies.Values.OrderBy(e => e.Liked ? 0 : 1));
+
+        [HttpPut("like")]
+        public ActionResult LikeCompany([FromBody]string id)
+        {
+            var found = Companies.TryGetValue(id, out _);
+            if (!found) return BadRequest("company id is invalid");
+
+            Companies[id].Liked = true;
+
+            return Ok();
+        }
     }
 
 

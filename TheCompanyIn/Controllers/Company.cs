@@ -90,6 +90,9 @@ namespace TheCompanyIn.Controllers
 
         [JsonPropertyName("ultimate_parent")]
         public UltimateParent UltimateParent { get; set; }
+
+        [JsonIgnore]
+        public bool Liked { get; set; }
     }
     public class Category
     {
